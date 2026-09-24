@@ -39,9 +39,9 @@ export function formatFee(fee: number | string | null): string {
   if (fee === null || fee === undefined || fee === "") return "Enquire";
   const value = typeof fee === "string" ? Number(fee) : fee;
   if (Number.isNaN(value)) return "Enquire";
-  return new Intl.NumberFormat("en-NG", {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "NGN",
+    currency: "USD",
     maximumFractionDigits: 0,
   }).format(value);
 }

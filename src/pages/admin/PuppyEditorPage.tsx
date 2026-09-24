@@ -167,7 +167,7 @@ function PuppyForm({ puppy }: { puppy: PuppyWithImages | null }) {
         <TextField label="Weight" placeholder="e.g. 6.2 kg" {...form.bind("weight")} />
         <TextField label="Location" {...form.bind("location")} />
         <TextField
-          label="Adoption fee (₦)"
+          label="Adoption fee ($)"
           type="number"
           min={0}
           step="1000"
