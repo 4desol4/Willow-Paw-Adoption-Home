@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Channels are space-separated RGB so Tailwind's opacity
+ * modifiers (bg-sun/20) keep working. Components never hard-code colours.
+ */
+:root {
+  --bg: 251 250 247;
+  --surface: 240 243 246;
+  --ink: 18 30 56;
+  --muted: 88 99 122;
+  --line: 214 220 230;
+  --sun: 255 176 0;
+  --accent: 158 92 0; /* readable "sun" for text on light backgrounds */
+  --leaf: 20 112 78;
+  --coral: 200 56 38;
+  --sky: 198 224 247;
+  --inverse: 18 30 56;
+  --inverse-fg: 251 250 247;
+  --gutter: 1.25rem;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 11 19 39;
+  --surface: 20 31 58;
+  --ink: 243 241 234;
+  --muted: 163 173 196;
+  --line: 38 50 79;
+  --sun: 255 176 0;
+  --accent: 255 190 46;
+  --leaf: 76 201 154;
+  --coral: 255 122 102;
+  --sky: 44 72 112;
+  --inverse: 20 31 58;
+  --inverse-fg: 243 241 234;
+  color-scheme: dark;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 3rem;
+  }
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    min-width: 320px;
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: theme("fontFamily.sans");
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  * {
+    border-color: rgb(var(--line));
+  }
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+  ::selection {
+    background: rgb(var(--sun) / 0.55);
+    color: rgb(18 30 56);
+  }
+
+  /* Headlines use the condensed end of the width axis for a tighter, sturdier voice. */
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: theme("fontFamily.display");
+    font-stretch: 84%;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 92rem;
+    padding-inline: var(--gutter);
+  }
+
+  /* Puppy photo frame: a doorway arch — the one recurring shape of the identity. */
+  .arch {
+    aspect-ratio: 4 / 5;
+    border-radius: 50% 50% 1.5rem 1.5rem / 40% 40% 1.5rem 1.5rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Type filled with a photograph. Colour behind it is the no-image fallback. */
+  .photo-type {
+    background-color: rgb(var(--sun));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    border-radius: 999px;
+    background: rgb(var(--ink));
+    color: rgb(var(--bg));
+    padding: 0.6rem 1.1rem;
+    font-weight: 600;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+}
+
+/* Lenis (smooth scroll) recommended rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Smooth theme switch: enabled for ~350 ms by the toggle, never under reduced motion */
+.theme-anim,
+.theme-anim *,
+.theme-anim *::before,
+.theme-anim *::after {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    fill 0.35s ease,
+    stroke 0.35s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

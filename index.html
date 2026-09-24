@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Willow & Paw Adoption Home</title>
+    <meta
+      name="description"
+      content="Healthy, vet-checked puppies raised at home and matched with loving forever families."
+    />
+    <meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B1327" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Willow & Paw Adoption Home" />
+    <meta
+      property="og:description"
+      content="Healthy, vet-checked puppies raised at home and matched with loving forever families."
+    />
+    <meta property="og:image" content="/android-chrome-512x512.png" />
+    <meta property="og:site_name" content="Willow & Paw Adoption Home" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Willow & Paw Adoption Home" />
+    <meta
+      name="twitter:description"
+      content="Healthy, vet-checked puppies raised at home and matched with loving forever families."
+    />
+    <meta name="twitter:image" content="/android-chrome-512x512.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Willow & Paw" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved theme before first paint so there is no light/dark flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem("gp-theme");
+          var dark =
+            stored === "dark" ||
+            ((stored === null || stored === "system") &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
