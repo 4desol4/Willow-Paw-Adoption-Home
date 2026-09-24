@@ -97,6 +97,17 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {settings.site_name}
           </p>
+          <div className="flex items-center gap-2 text-inverse-fg/70">
+            <span>Made by</span>
+            <a
+              href="https://github.com/4desol4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-inverse-fg transition-colors duration-200 hover:text-sun"
+            >
+              4desol4
+            </a>
+          </div>
           <Link to="/admin/login" className="transition-colors hover:text-sun">
             Owner sign in
           </Link>
